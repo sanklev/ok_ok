@@ -2,6 +2,10 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
+import os
+from intro_to_flask import app
+
+
 
 ########### Define your variables
 beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
@@ -59,5 +63,8 @@ app.layout = html.Div(children=[
     ]
 )
 
+port = int(os.environ.get("PORT", 5000))
+
 if __name__ == '__main__':
-    app.run_server()
+    app.run(debug=True, host='0.0.0.0', port=port)
+
